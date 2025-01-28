@@ -1,4 +1,5 @@
 from turtle import Turtle,Screen
+from food import Food
 from snake import Snake
 import time
 
@@ -12,6 +13,7 @@ start_point = [(0,0),(-20,0),(-40,0)]
 segments = []
 
 snake = Snake()
+food = Food()
 
 screen.listen()
 screen.onkey(snake.up,"Up")
@@ -20,12 +22,15 @@ screen.onkey(snake.left,"Left")
 screen.onkey(snake.right,"Right")
 
 
-
 while True:
     screen.update()
     time.sleep(0.1)
     #대가리를 따라가는 몸통
     snake.move()    
 
+    #음식과 닿는 것을 감지
+    if snake.head.distance(food) < 15:
+        print("냐암 냐암 냐암")
+        food.refresh()
 
 screen.exitonclick()

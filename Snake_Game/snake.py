@@ -5,6 +5,7 @@ UP = 90
 DOWN = 270
 LEFT = 180
 RIGHT = 0
+
 class Snake:
     def __init__(self):
         self.segments = []
@@ -39,7 +40,7 @@ class Snake:
             self.head.setheading(LEFT)
     
     def down(self):
-        if self.head.heading() != LEFT:
-            self.head.setheading(RIGHT)
+        if self.head.heading() != UP:
+            self.head.setheading(DOWN)
     
     
