@@ -14,11 +14,17 @@ class Snake:
 
     def create_snake(self):
         for point in START_POINTS:
-            new_seg = Turtle("square")
-            new_seg.color("white")
-            new_seg.penup()
-            new_seg.goto(point)
-            self.segments.append(new_seg)
+            self.add_segment(point)
+
+    def add_segment(self,point):
+        new_seg = Turtle("square")
+        new_seg.color("white")
+        new_seg.penup()
+        new_seg.goto(point)
+        self.segments.append(new_seg)        
+    #길이 늘리기
+    def extend(self):
+        self.add_segment(self.segments[-1].position())
 
     def move(self):
         for seg_num in range(len(self.segments)-1,0,-1):

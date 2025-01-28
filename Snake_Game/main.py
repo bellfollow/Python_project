@@ -21,8 +21,8 @@ screen.onkey(snake.down,"Down")
 screen.onkey(snake.left,"Left")
 screen.onkey(snake.right,"Right")
 
-
-while True:
+game_is_on = True
+while game_is_on:
     screen.update()
     time.sleep(0.1)
     #대가리를 따라가는 몸통
@@ -33,5 +33,18 @@ while True:
         print("냐암 냐암 냐암")
         food.refresh()
         scoreboard.increase_socre()
+        snake.extend()
+
+    # 대가리 벽에 닿으면 종료
+    if snake.head.xcor() > 280 or snake.head.xcor() < -280 or snake.head.ycor() > 280 or snake.head.ycor() < -280:
+        game_is_on = False
+        scoreboard.game_over()
+    for segment in snake.segments:
+        if segment == snake.head:
+            pass
+        elif snake.head.distance(segment) < 10:
+            game_is_on = False    
+            scoreboard.game_over()
+    #대가리 꼬리에 닿으면 종료
 
 screen.exitonclick()
