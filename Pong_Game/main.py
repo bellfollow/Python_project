@@ -47,7 +47,7 @@ while game_is_on:
     ball.move()
 
     if ball.ycor() > 280 or ball.ycor() < -280:
-        #바운스 필요wwwwwww
+        #바운스 필요
         ball.bounce_y()
     #오른쪽 패들 충ㅇ돌
     if (ball.distance(r_padle) < 40 and ball.xcor() > 320) or (ball.distance(l_padle) < 40 and ball.xcor() < -320):
